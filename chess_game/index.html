@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chess Game</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  
+  <div id="menu">
+    <h1>Chess Game</h1>
+    <button class="modeBtn" onclick="showNameInputs('pvp')">Player vs Player</button>
+    <button class="modeBtn" onclick="showNameInputs('pve')">Player vs AI</button>
+
+    <div id="nameInputs" class="hidden">
+      
+      <div id="pvpInputs" class="hidden">
+        <input id="p1Name" placeholder="Player 1 Name" />
+        <input id="p2Name" placeholder="Player 2 Name" />
+        <button id="startPvPBtn" class="modeBtn hidden" onclick="startGame('pvp')">Start Game</button>
+      </div>
+
+    
+      <div id="pveInputs" class="hidden">
+        <input id="playerName" placeholder="Your Name" />
+        <div id="difficultySelection">
+          <button class="modeBtn" onclick="setDifficulty('easy',this)">Easy</button>
+          <button class="modeBtn" onclick="setDifficulty('medium',this)">Medium</button>
+          <button class="modeBtn" onclick="setDifficulty('hard',this)">Hard</button>
+        </div>
+        <button id="startPVEBtn" class="modeBtn hidden" onclick="startGame('pve')">Start Game</button>
+      </div>
+    </div>
+
+
+    <div id="creditBox">Created by Dave M Cortes</div>
+  </div>
+
+  
+  <div id="gameUI" class="hidden">
+    <div id="statusBar"></div>
+    <div id="board" class="board"></div>
+    <div>
+      <button id="toggleMovesBtn" onclick="toggleMoves()">Hide Moves</button>
+      <button id="playAgainBtn" class="hidden" onclick="restartGame()">Play Again</button>
+      <button onclick="backToMenu()">Back to Menu</button>
+    </div>
+  </div>
+
+ 
+  <div id="promotionPopup" class="popup hidden">
+    <div>
+      <button onclick="promote('q')">Queen</button>
+      <button onclick="promote('r')">Rook</button>
+      <button onclick="promote('b')">Bishop</button>
+      <button onclick="promote('n')">Knight</button>
+    </div>
+  </div>
+
+  
+  <div id="winsPopupOverlay" class="hidden">
+    <div id="winsPopup">
+      <h3 id="winnerText"></h3>
+      <ul>
+        <li id="scoreBoard"></li>
+      </ul>
+      <div id="winsPopupButtons">
+        <button class="btn" onclick="rematchGame()">Rematch</button>
+        <button class="btn" onclick="restartGame()">Play Again</button>
+        <button class="btn" onclick="backToMenu()">Back to Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="board.js"></script>
+  <script src="ai.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
